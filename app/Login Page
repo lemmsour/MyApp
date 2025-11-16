@@ -1,0 +1,68 @@
+import { useState } from "react";
+import { View, Text, TextInput, Button, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
+
+export const options = {
+  headerShown: false,
+};
+
+export default function LoginScreen() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.replace("/(tabs)");
+  };
+
+  return (
+    <View style={{ flex: 1, justifyContent: "center", padding: 20 }}>
+      <Text style={{ fontSize: 20, marginBottom: 20, textAlign: "center"}}>Solono</Text>
+
+      <TextInput
+        placeholder="Enter Email"
+        placeholderTextColor={"#222222"}
+        value={email}
+        onChangeText={setEmail}
+        style={{
+          borderWidth: 0,
+          textAlign: "center",
+          color: "black",
+          backgroundColor: "#F5F5F5",
+          borderRadius: 20,
+          padding: 10,
+          marginBottom: 10,
+        }}
+      />
+
+      <TextInput
+        placeholder="Enter Password"
+        placeholderTextColor={"#222222"}
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+        style={{
+          borderWidth: 0,
+          textAlign: "center",
+          color: "black",
+          backgroundColor: "#F5F5F5",
+          borderRadius: 20,
+          padding: 10,
+          marginBottom: 20,
+        }}
+      />
+
+      <TouchableOpacity
+        style={{
+          backgroundColor: "#C94842",
+          paddingVertical: 15,
+          borderRadius: 20,
+          alignItems: "center",
+        }}
+        onPress={handleLogin}
+      >
+        <Text style={{ color: "white", fontWeight: "bold" }}>LOGIN</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
